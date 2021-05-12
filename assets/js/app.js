@@ -17,12 +17,16 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 // Import Data
-d3.csv("/data/data.csv").then(function(csvData) {
+d3.csv("assets/data/data.csv").then(function(csvData) {
     // Step 1: Parse Data/Cast as numbers
     // ==============================
     csvData.forEach(function(data) {
       data.healthcare = +data.healthcare;
       data.poverty = +data.poverty;
+      data.age        = +data.age;
+    data.smokes     = +data.smokes;
+    data.obesity    = +data.obesity;
+    data.income     = +data.income;
     });
     // Step 2: Create scale functions
     // ==============================
