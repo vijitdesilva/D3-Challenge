@@ -53,10 +53,10 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
     .data(csvData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.healthcare))
-    .attr("cy", d => yLinearScale(d.poverty))
+    .attr("cx", d => xLinearScale(d.poverty))
+    .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", "15")
-    .attr("fill", "blue")
+    .attr("fill", "lightblue")
     .attr("opacity", ".5");
     // Step 6: Initialize tool tip
     // ==============================
