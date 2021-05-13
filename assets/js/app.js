@@ -23,18 +23,18 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
     csvData.forEach(function(data) {
       data.healthcare = +data.healthcare;
       data.poverty = +data.poverty;
-      data.age        = +data.age;
-    data.smokes     = +data.smokes;
-    data.obesity    = +data.obesity;
-    data.income     = +data.income;
+      data.age     = +data.age;
+      data.smokes     = +data.smokes;
+      data.obesity    = +data.obesity;
+      data.income     = +data.income;
     });
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(csvData, d => d.healthcare)])
+      .domain([8, d3.max(csvData, d => d.healthcare)])
       .range([0, width]);
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(csvData, d => d.poverty)])
+      .domain([2, d3.max(csvData, d => d.poverty)])
       .range([height, 0]);
     // Step 3: Create axis functions
     // ==============================
@@ -85,11 +85,11 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Number of Billboard 100 Hits");
+      .text("Lacks Healthcare (%)");
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Hair Metal Band Hair Length (inches)");
+      .text("In Poverty (%)");
   }).catch(function(error) {
     console.log(error);
   });
