@@ -53,6 +53,13 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
     .data(csvData)
     .enter()
     .append("circle")
+
+    //NEED to recheck?
+    .text(d => d.abbr)
+    .attr('color', 'black')
+    .attr('font-size', 15)
+    //NEED TO RECHECK above??
+    
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", "15")
@@ -64,7 +71,7 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-        return (`${d.abbr}<br>Health: ${d.healthcare}<br>Poverty: ${d.poverty}`);
+        // return (`${d.abbr}<br>Health: ${d.healthcare}<br>Poverty: ${d.poverty}`);
       });
     // Step 7: Create tooltip in the chart
     // ==============================
