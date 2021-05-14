@@ -47,6 +47,9 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
       .call(bottomAxis);
     chartGroup.append("g")
       .call(leftAxis);
+    chartGroup.append("text")
+      .attr(d => d.abbr)
+      
     // Step 5: Create Circles
     // ==============================
     var circlesGroup = chartGroup.selectAll("circle")
@@ -55,9 +58,7 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
     .append("circle")
 
     //NEED to recheck?
-    .text(d => d.abbr)
-    .attr('color', 'black')
-    .attr('font-size', 15)
+    //.text(d => d.abbr)
     //NEED TO RECHECK above??
     
     .attr("cx", d => xLinearScale(d.poverty))
