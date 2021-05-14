@@ -47,8 +47,7 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
       .call(bottomAxis);
     chartGroup.append("g")
       .call(leftAxis);
-    chartGroup.append("text")
-      .attr(d => d.abbr)
+    
       
     // Step 5: Create Circles
     // ==============================
@@ -56,7 +55,8 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
     .data(csvData)
     .enter()
     .append("circle")
-
+    // .append("text")
+    // .attr(d => d.abbr)
     //NEED to recheck?
     //.text(d => d.abbr)
     //NEED TO RECHECK above??
@@ -86,6 +86,21 @@ d3.csv("assets/data/data.csv").then(function(csvData) {
       .on("mouseout", function(data, index) {
         toolTip.hide(data);
       });
+      
+//============add texts to each datapoint=========
+chartGroup.append("g")
+.selectAll('text')
+.data(CensusData)
+.enter()
+.append("text")
+.text(d=>d.abbr)
+.classed(".stateText", true)
+.attr("font-family", "sans-serif")
+.attr("text-anchor", "middle")
+.attr("fill", "white")
+.attr("font-size", "10px")
+.style("font-weight", "bold")
+.attr("alignment-baseline", "central");
     // Create axes labels
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
