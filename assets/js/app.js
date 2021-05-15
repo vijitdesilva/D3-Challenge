@@ -131,7 +131,7 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
-// ====Create an SVG wrapper,append an SVG group that will hold chart and set margins=====
+// Create an SVG wrapper,append an SVG group that will hold chart and set margins
 var svg = d3
   .select("#scatter")
   .append("svg")
@@ -141,7 +141,7 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// ==========Import and format the data to numerical values =======================
+// Import and format the data to numerical values 
 d3.csv("assets/data/data.csv").then(function(CensusData) {
   CensusData.forEach(function(data) {
     data.healthcare = +data.healthcare;
@@ -149,7 +149,7 @@ d3.csv("assets/data/data.csv").then(function(CensusData) {
     // console.log(data);
   });
 
-  // ==============Create Scales====================
+  // Create Scales
   var xLinearScale = d3.scaleLinear()
       .domain([8, d3.max(CensusData, d => d.poverty)])
       .range([0, width]);
@@ -157,16 +157,16 @@ d3.csv("assets/data/data.csv").then(function(CensusData) {
       .domain([2, d3.max(CensusData, d => d.healthcare)])
       .range([height, 0]);
   
-  // =============Create Axes=========================
+  // Create Axes
   var bottomAxis = d3.axisBottom(xLinearScale);
   var leftAxis = d3.axisLeft(yLinearScale);
 
 
-// ============Append axes to the chartGroup==========
+// Append axes to the chartGroup
   chartGroup.append("g").attr("transform", `translate(0, ${height})`).call(bottomAxis);
   chartGroup.append("g").call(leftAxis);
 
-//============Generate scatter plot=========
+// Generate scatter plot
 chartGroup.selectAll("circle")
 .data(CensusData)
 .enter()
@@ -178,15 +178,15 @@ chartGroup.selectAll("circle")
 .classed("stateCircle", true)
 .attr("opacity", 0.75);
 
-//============add texts to each datapoint=========
+// add texts to each datapoint
 chartGroup.append("g")
   .selectAll('text')
   .data(CensusData)
   .enter()
   .append("text")
   .text(d=>d.abbr)
-  .attr("cx", d=>xLinearScale(d.poverty))
-  .attr("cy", d=>yLinearScale(d.healthcare))
+  // .attr("cx", d=>xLinearScale(d.poverty))
+  // .attr("cy", d=>yLinearScale(d.healthcare))
   .classed(".stateText", true)
   .attr("font-family", "sans-serif")
   .attr("text-anchor", "middle")
@@ -195,7 +195,7 @@ chartGroup.append("g")
   .style("font-weight", "bold")
   .attr("alignment-baseline", "central");
   
-  //============add axes titles=========
+  //add axes titles
   chartGroup.append("text")
         .attr("transform", `translate(${width / 2}, ${height + margin.top })`)
         .attr("text-anchor", "middle")
