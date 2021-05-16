@@ -1,4 +1,4 @@
-
+// Setting variable for height and width for ease of calculations
 var svgWidth = 960;
 var svgHeight = 500;
 
