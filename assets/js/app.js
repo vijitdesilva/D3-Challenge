@@ -98,3 +98,4 @@ chartGroup.append("g")
 }).catch(function(error) {
   console.log(error);
 });
+// completed
