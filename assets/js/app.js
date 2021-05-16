@@ -176,7 +176,7 @@ chartGroup.selectAll("circle")
 .attr("r", "15")
 .attr("stroke-width", "1")
 .classed("stateCircle", true)
-.attr("opacity", 0.75);
+.attr("opacity", 0.85);
 
 // add texts to each datapoint
 chartGroup.append("g")
@@ -184,9 +184,10 @@ chartGroup.append("g")
   .data(CensusData)
   .enter()
   .append("text")
+  .attr("x", d=>xLinearScale(d.poverty))
+  .attr("y", d=>yLinearScale(d.healthcare))
+  .attr("dy", ".35em") 
   .text(d=>d.abbr)
-  // .attr("cx", d=>xLinearScale(d.poverty))
-  // .attr("cy", d=>yLinearScale(d.healthcare))
   .classed(".stateText", true)
   .attr("font-family", "sans-serif")
   .attr("text-anchor", "middle")
@@ -197,12 +198,12 @@ chartGroup.append("g")
   
   //add axes titles
   chartGroup.append("text")
-        .attr("transform", `translate(${width / 2}, ${height + margin.top +30})`)
+        .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
         .attr("text-anchor", "middle")
         .attr("font-size", "16px")
         .attr("fill", "black")
         .style("font-weight", "bold")
-        .text("Poverty (%)");
+        .text("In Poverty (%)");
 
         chartGroup.append("text")
         .attr("y", 0 - ((margin.left / 2)))
@@ -212,7 +213,7 @@ chartGroup.append("g")
         .attr("fill", "black")
         .style("font-weight", "bold")
         .attr("transform", "rotate(-90)")
-        .text("Lack Healthcare (%)");
+        .text("Lacks Healthcare (%)");
 }).catch(function(error) {
   console.log(error);
 });
