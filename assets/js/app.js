@@ -197,7 +197,7 @@ chartGroup.append("g")
   
   //add axes titles
   chartGroup.append("text")
-        .attr("transform", `translate(${width / 2}, ${height + margin.top })`)
+        .attr("transform", `translate(${width / 2}, ${height + margin.top +30})`)
         .attr("text-anchor", "middle")
         .attr("font-size", "16px")
         .attr("fill", "black")
