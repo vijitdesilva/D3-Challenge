@@ -33,10 +33,10 @@ d3.csv("assets/data/data.csv").then(function(CensusData) {
   // Create Scales
   var xLinearScale = d3.scaleLinear()
       .domain([8, d3.max(CensusData, d => d.poverty)])
-      .range([0, width]);
+      .range([2, width]);
     var yLinearScale = d3.scaleLinear()
-      .domain([2, d3.max(CensusData, d => d.healthcare)])
-      .range([height, 0]);
+      .domain([3, d3.max(CensusData, d => d.healthcare)])
+      .range([height,0]);
   
   // Create Axes
   var bottomAxis = d3.axisBottom(xLinearScale);
